@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+    android:background="@color/colorWhite"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="550dp"
+        tools:context=".MainActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="@dimen/cardview_default_elevation">
+
+
+            <ImageButton
+                android:id="@+id/go_home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:clickable="true"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_home_black">
+
+            </ImageButton>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/alert_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/alert_mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="@dimen/cardview_default_elevation">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="@dimen/cardview_default_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <ToggleButton
+                        android:id="@+id/origin_btn"
+                        android:background="@drawable/button"
+                        android:layout_width="80dp"
+                        android:textSize="10dp"
+                        android:textColor="#C80900"
+                        android:layout_height="30dp"
+                        android:checked="true"
+                        android:textStyle="bold"
+                        android:text="ToggleButton"
+                        android:textOn="Origin"
+                        android:textOff="Origin"
+                        android:showText="true"/>
+
+                    <TextView
+                        android:id="@+id/origin_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:textSize="8dp"
+                        android:hint="Set the origin of the route"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                    </TextView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="@dimen/cardview_default_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <ToggleButton
+                        android:id="@+id/destination_btn"
+                        android:background="@drawable/button"
+                        android:layout_width="80dp"
+                        android:textColor="#0B03C8"
+                        android:textSize="10dp"
+                        android:layout_height="30dp"
+                        android:checked="false"
+                        android:text="ToggleButton"
+                        android:textOn="Destination"
+                        android:textOff="Destination"
+                        android:showText="true"/>
+
+                    <TextView
+                        android:id="@+id/destiation_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:textSize="8dp"
+                        android:hint="Set the destination of the route"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                    </TextView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="@dimen/cardview_default_elevation">
+
+                <Button
+                    android:id="@+id/setRoute"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button"
+                    android:text="Stablish Route"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

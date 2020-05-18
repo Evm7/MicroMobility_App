@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_gradient"
+    tools:context=".ui.video.VideoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            app:show_buffering="when_playing"
+            app:controller_layout_id="@layout/custom_player"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/botton_containers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
+
+
+            <LinearLayout
+                android:id="@+id/aligner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/decrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-"
+                    android:layout_gravity="center"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_shadow"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:cardBackgroundColor="@color/cardview_dark_background"
+                    app:cardCornerRadius="70dp"
+                    app:cardElevation="70dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_outer"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="60dp"
+                        app:cardElevation="60dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_view_inner"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:cardBackgroundColor="@color/choose_vehicle"
+                            app:cardCornerRadius="70dp"
+                            app:cardElevation="30dp">
+
+                            <TextView
+                                android:id="@+id/integer_number"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:text="0"
+                                android:textStyle="bold"
+                                android:textSize="20dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorWhite">
+                            </TextView>
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+
+                <Button
+                    android:id="@+id/increase"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/save_results"
+                android:clickable="true"
+                android:layout_gravity="right|bottom">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:cardBackgroundColor="@color/choose_vehicle"
+                    app:cardCornerRadius="70dp"
+                    app:cardElevation="70dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="60dp"
+                        app:cardElevation="60dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:cardBackgroundColor="@color/black_overlay"
+                            app:cardCornerRadius="70dp"
+                            app:cardElevation="30dp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_save_black_24dp">
+                            </ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="227dp">
+
+        <toan.android.floatingactionmenu.FloatingActionsMenu
+            android:id="@+id/menu_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            fab:fab_addButtonColorNormal="@color/choose_vehicle"
+            fab:fab_addButtonColorPressed="@color/colorWhite"
+            fab:fab_addButtonSize="normal"
+            app:fab_menuIcon="@mipmap/car"
+            fab:fab_labelStyle="@style/Etiquetas"
+            fab:fab_labelsPosition="right">
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/car_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/choose_vehicle"
+                fab:fab_icon="@mipmap/car"
+                fab:fab_size="mini"
+                fab:fab_title="Car" />
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/motorbike_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/choose_vehicle"
+                fab:fab_icon="@mipmap/motorbike"
+                fab:fab_size="mini"
+                fab:fab_title="Motorbike" />
+
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/bus_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/choose_vehicle"
+                fab:fab_icon="@mipmap/bus"
+                fab:fab_size="mini"
+                fab:fab_title="Bus" />
+
+        </toan.android.floatingactionmenu.FloatingActionsMenu>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/action_undo_detect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="280dp"
+        android:clickable="true">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@color/choose_vehicle"
+            app:cardCornerRadius="70dp"
+            app:cardElevation="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/black_overlay"
+                    app:cardCornerRadius="70dp"
+                    app:cardElevation="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_undo_black_24dp"></ImageView>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>
+
+
+

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?><!-- The Relative Layout provides margins. Margins don't work for Dialogs -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="true"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/ProductNameListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:paddingTop="5dp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/delete_Account"
+                    android:textColor="#000000"
+                    android:textSize="15dp" />
+
+                <TextView
+                    style="@style/ProductNameListStyle"
+                    android:layout_width="244dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:lines="2"
+                    android:singleLine="false"
+                    android:text="@string/information_byebye"
+                    android:textColor="#000000"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/YesDelete"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/round_button_background_green"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:onClick="cancelActivity"
+                        android:text="@string/yes"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/NotDelete"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/round_button_background"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:onClick="cancelActivity"
+                        android:text="@string/no"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

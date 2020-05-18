@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end|bottom">
+
+    <toan.android.floatingactionmenu.FloatingActionsMenu
+        android:id="@+id/menu_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/margenes_fab"
+        fab:fab_addButtonColorNormal="@color/choose_traffic_road"
+        fab:fab_addButtonColorPressed="@color/colorWhite"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelStyle="@style/Etiquetas"
+        fab:fab_labelsPosition="left"
+        android:elevation="10dp">
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/sidewalk_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@mipmap/sidewalk"
+            fab:fab_size="mini"
+            fab:fab_title="Sidewalk" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/crosswalk_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@mipmap/crosswalk"
+            fab:fab_size="mini"
+            fab:fab_title="Crosswalk" />
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/road_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@mipmap/road"
+            fab:fab_size="mini"
+            fab:fab_title="Road" />
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/bidirect_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@mipmap/bidirectional"
+            fab:fab_size="mini"
+            fab:fab_title="Bike Bidirectional" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/unidirect_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@drawable/unidirectional"
+            fab:fab_size="mini"
+            fab:fab_title="Bike Unidirectional" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/unknown_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/choose_traffic_road"
+            fab:fab_icon="@mipmap/unknown"
+            fab:fab_size="mini"
+            fab:fab_title="Unknown" />
+    </toan.android.floatingactionmenu.FloatingActionsMenu>
+
+</RelativeLayout>

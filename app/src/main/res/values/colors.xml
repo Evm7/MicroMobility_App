@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#56B900</color>
+    <color name="colorPrimaryDark">#289C2B</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryLight">#84FF19</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#CCCCCC</color>
+    <color name="graylight">#fcfdfb</color>
+
+
+    <color name="bgBackSideColor">#f4f0ff</color>
+    <color name="bgTitleLeft">#289C2B</color>
+    <color name="bgTitleRight">#ffffff</color>
+    <color name="bgContentTop">#289C2B</color>
+    <color name="bgContent">#ffffff</color>
+    <color name="contentDividerLine">#e0e0e0</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="btnRequest">#ffbf12</color>
+
+    <color name="black_overlay">#66000000</color>
+
+
+    <color name="choose_traffic_road">#888a38</color>
+    <color name="choose_pedestrian">#3d5191</color>
+    <color name="choose_bikes">#3d8b91</color>
+    <color name="choose_vehicle">#803b3b</color>
+    <color name="choose_public_transport">#3d9161</color>
+    <color name="choose_sings">#8f4275</color>
+    <color name="choose_others">#7c8a45</color>
+    <color name="choose_news">#8a5d2d</color>
+
+
+
+</resources>

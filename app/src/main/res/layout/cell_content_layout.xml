@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <!-- content header line -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgContentTop"
+        android:paddingBottom="7dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="7dp">
+
+        <TextView
+            android:id="@+id/title_video_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/video_title"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu_icon" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/file_uploaded_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_file_upload" />
+
+    </RelativeLayout>
+
+    <!-- content header image -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/head_photo"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/head_image" />
+
+        <TextView
+            android:id="@+id/extend_duration_label"
+            style="@style/ContentImageBadgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/head_photo"
+            android:layout_alignLeft="@id/head_photo"
+            android:layout_alignStart="@id/head_photo"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/duration_mock" />
+
+        <TextView
+            style="@style/ContentImageBadgeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/extend_duration_label"
+            android:layout_alignLeft="@id/extend_duration_label"
+            android:layout_alignStart="@id/extend_duration_label"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/duration_badge" />
+
+        <TextView
+            android:id="@+id/head_image_right_text"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/head_photo"
+            android:layout_alignEnd="@id/head_photo"
+            android:layout_alignRight="@id/head_photo"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/detection_button_NO"
+/>
+
+        <TextView
+            android:id="@+id/head_image_center_text"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/head_photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/uploaded_button_NO"
+/>
+
+
+    </RelativeLayout>
+
+    <!-- content body layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgContent"
+        android:orientation="vertical"
+        android:paddingBottom="6dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="9dp">
+
+        <!-- avatar and name part -->
+        <RelativeLayout
+            android:id="@+id/clicking_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/content_avatar_title"
+                style="@style/ContentMainBadgeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="5dp"
+                android:text="@string/sender_badge" />
+
+            <ImageView
+                android:id="@+id/content_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="57dp"
+                android:layout_marginLeft="57dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toEndOf="@id/content_name_view"
+                android:layout_toRightOf="@id/content_name_view"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar" />
+
+            <TextView
+                android:id="@+id/content_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/content_avatar_title"
+                android:text="@string/client_name_mock"
+                android:textColor="@color/mainTextColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <!-- divider line -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="9dp"
+            android:src="@color/contentDividerLine" />
+
+        <!-- addresses part -->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/adding_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/ContentMainBadgeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="@string/no_geojson"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/add_geojson"
+                android:background="@color/colorAccent"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/head_photo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Add Location"
+                />
+
+        </LinearLayout>
+        <!-- addresses part -->
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/clicking_map_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_from_badge"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/from_badge" />
+
+                <TextView
+                    android:id="@+id/content_from_address_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_from_badge"
+                    android:layout_alignStart="@id/content_from_badge"
+                    android:layout_below="@id/content_from_badge"
+                    android:text="@string/content_from1_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/content_from_address_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_from_address_1"
+                    android:layout_alignStart="@id/content_from_address_1"
+                    android:layout_below="@id/content_from_address_1"
+                    android:text="@string/content_from2_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="8dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_to_badge"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/to_badge" />
+
+                <TextView
+                    android:id="@+id/content_to_address_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_to_badge"
+                    android:layout_alignStart="@id/content_to_badge"
+                    android:layout_below="@id/content_to_badge"
+                    android:text="@string/content_to1_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/content_to_address_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_to_address_1"
+                    android:layout_alignStart="@id/content_to_address_1"
+                    android:layout_below="@id/content_to_address_1"
+                    android:text="@string/content_to2_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="8dp" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/goToMapArrow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow" />
+
+        </LinearLayout>
+
+        <!-- divider line -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="7dp"
+            android:src="@color/contentDividerLine" />
+
+        <!-- dates part -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_delivery_date_badge"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/date_badge" />
+
+                <TextView
+                    android:id="@+id/content_delivery_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_delivery_date_badge"
+                    android:layout_alignStart="@id/content_delivery_date_badge"
+                    android:layout_below="@id/content_delivery_date_badge"
+                    android:text="@string/time_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/content_delivery_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/content_delivery_time"
+                    android:layout_alignStart="@id/content_delivery_time"
+                    android:layout_below="@id/content_delivery_time"
+                    android:text="@string/date_mock"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_deadline_badge"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/information_badge" />
+
+                <TextView
+                    android:id="@+id/info_button_card"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@color/colorGray"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:layout_alignLeft="@id/content_deadline_badge"
+                    android:layout_alignStart="@id/content_deadline_badge"
+                    android:layout_below="@id/content_deadline_badge"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="ℹ️"
+                    android:textSize="10dp"
+                    android:padding="@dimen/card_padding"
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/content_request_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/content_deadline_badge"
+                    android:layout_alignStart="@id/info_button_card"
+                    android:layout_alignLeft="@id/info_button_card"
+                    android:layout_marginStart="46dp"
+                    android:layout_marginLeft="46dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorGray"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:hint="@string/request_btn_text"
+                    android:padding="@dimen/card_padding"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- request button -->
+        <TextView
+            android:id="@+id/goToMapArrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/btnRequest"
+            android:padding="5dp"
+            android:text="VISIT VIDEO"
+            android:textAlignment="center"
+            android:textColor="@color/mainTextColor"
+            android:textSize="15sp"
+            android:typeface="monospace"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/help_title"
+            android:textAlignment="center"
+            android:textColor="@color/contentBadgeTitle"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

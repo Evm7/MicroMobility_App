@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?><!-- The Relative Layout provides margins. Margins don't work for Dialogs -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimaryDark">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:baselineAligned="true"
+          android:orientation="horizontal"
+          android:gravity="center">
+
+        <TextView
+            style="@style/ProductNameListStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:lines="2"
+            android:paddingTop="5dp"
+            android:singleLine="false"
+            android:text="@string/information_about_app"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/CloseDialog"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="45dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/round_button_background"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="cancelActivity"
+            android:text="X"
+            android:textColor="#FFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:baselineAligned="false"
+          android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:baselineAligned="false"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="2dp"
+            android:orientation="vertical">
+
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:baselineAligned="true"
+              android:orientation="horizontal">
+
+            <TextView
+                style="@style/ProductPriceListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/name"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/Name_drug_take"
+                style="@style/ProductQuantityListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/colorWhite"
+                android:textSize="12dp" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:baselineAligned="true"
+              android:orientation="horizontal">
+
+            <TextView
+                style="@style/ProductPriceListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/creators"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <TextView
+
+                style="@style/ProductQuantityListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HealthCare Assistant Integrators"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+          </LinearLayout>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:baselineAligned="true"
+              android:orientation="horizontal">
+
+            <TextView
+                style="@style/ProductPriceListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subject"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <TextView
+                style="@style/ProductQuantityListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ESTEVE VALLS"
+                android:textColor="@color/colorWhite"
+                android:textSize="12dp" />
+
+          </LinearLayout>
+
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:baselineAligned="true"
+              android:orientation="horizontal"
+              android:layout_marginBottom="10dp">
+
+            <TextView
+                style="@style/ProductPriceListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/version"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/end_date_delete"
+                style="@style/ProductQuantityListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19-12-2019"
+                android:textColor="@color/colorWhite"
+                android:textSize="12dp" />
+
+          </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+          <ImageView
+
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_alignParentRight="true"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:layout_margin="2dp"
+              android:background="@drawable/logo"
+              android:gravity="center_vertical|center_horizontal" />
+        </RelativeLayout>
+
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+
+</RelativeLayout>

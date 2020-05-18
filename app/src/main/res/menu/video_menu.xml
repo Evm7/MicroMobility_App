@@ -1,0 +1,23 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_undo"
+        android:icon="@drawable/ic_undo_black_24dp"
+        android:title="@string/action_return"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/action_home"
+            app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_delete"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/action_home"
+        app:showAsAction="ifRoom"/>
+
+</menu>

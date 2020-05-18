@@ -1,0 +1,224 @@
+<resources>
+    <!-- APP INFORMATION -->
+    <string name="app_name">MicroMobility</string>
+    <string name="title_activity_micromobility">MicroMobility</string>
+
+    <!--Titles for the menus -->
+    <string name="title_home">Home</string>
+    <string name="title_configuration">Configuration</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_dashboard">Dashboard</string>
+
+    <!-- Action for settings action bar -->
+    <string name="action_settings">Settings</string>
+    <string name="action_upload">Upload</string>
+    <string name="action_home">Home</string>
+    <string name="action_return">Return to videos</string>
+    <string name="action_delete">Delete video</string>
+
+
+
+
+    <!--LocationAdapter Permissions Messages for the Prompt -->
+    <string name="title_location_permission">GPS is disabled</string>
+    <string name="text_location_permission">Go to turn on your GPS?</string>
+    <string name="ok">OK</string>
+
+    <!--Camera Messages for the Prompt -->
+    <string name="take_picture">Take picture</string>
+
+    <!--Configuration Messages for the Prompt -->
+    <string name="help">Help</string>
+    <string name="account">Account</string>
+    <string name="notification">Notifications</string>
+    <string name="choose_priority">Choose priority of notifications</string>
+    <string name="max">MAX</string>
+    <string name="default_mode">DEFAULT</string>
+    <string name="high">HIGH</string>
+    <string name="min">MIN</string>
+    <string name="low">LOW</string>
+
+    <string name="expiration_date">Expiration date:</string>
+    <string name="change_password">Change password</string>
+    <string name="click_to_insert_new_password">Click to insert new password for the account </string>
+    <string name="set">Set</string>
+    <string name="change_language">Change Language</string>
+    <string name="sets_language">"Sets the language"</string>
+    <string name="change_postal_code">Change postal code</string>
+    <string name="establishes_postal_code">Establishes the postal code</string>
+    <string name="change_email_adress">Change email address</string>
+    <string name="user_email_adress">User email adress</string>
+    <string name="new_email_tutor">Add new email address for notificatying tutor</string>
+    <string name="add_email_adress">Add email adress</string>
+
+    <string name="sign_up">SIGN UP</string>
+    <string name="translate">TRANSLATE</string>
+    <string name="email">Email</string>
+    <string name="already_account">Already Have an Account?  Sign in</string>
+    <string name="birthday">Date of birth</string>
+    <string name="add_postal_code">Add Postal Code</string>
+    <string name="insert_profile_picture">Click to insert your profile picture</string>
+    <string name="information_app">Information about the Application?</string>
+    <string name="creators">Creators:</string>
+    <string name="name">Name:</string>
+    <string name="subject">Subject:</string>
+    <string name="version">Version app date:</string>
+    <string name="introduce_new_email">Introduce new user email</string>
+    <string name="introduce_new_tutor_email">Introduce new tutor email</string>
+    <string name="change_tutor_email">Change email of the tutor</string>
+    <string name="introduce_new_language">Introduce new language</string>
+    <string name="introduce_current_password">Introduce your current password</string>
+    <string name="introduce_password_again">Introduce new password again for double check</string>
+    <string name="introduce_new_password">Introduce your new password</string>
+    <string name="introduce_new_postal_code">Introduce your new postal code</string>
+    <string name="show_video">Show video about MicroMobility</string>
+    <string name="invite_friends">Invite friends</string>
+    <string name="information_about_app">Information about app</string>
+    <string name="session_close">Close your session</string>
+    <string name="home">Home</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="delete_Account">Are you sure you want to delete your account?</string>
+    <string name="delete_Video">Are you sure you want to delete this video?</string>
+    <string name="information_byebye">All information of your account will be permenatly deleted. No possible recover</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="screenshot_problem">Add screenshots of the problem (optional)</string>
+    <string name="describe_problem">Describe problem</string>
+    <string name="read">Have you already read our Frequent Questions?</string>
+    <string name="send">Send</string>
+    <string name="time">Time ⏰</string>
+    <string name="go_back">Go back</string>
+    <string name="color_light">Choose colour of light</string>
+    <string name="red">RED</string>
+    <string name="cyan">CYAN</string>
+    <string name="none">NONE</string>
+    <string name="yellow">YELLOW</string>
+    <string name="log_out">Are you sure you want to Log out?</string>
+    <string name="log_out_1">Log out</string>
+    <string name="notifications_tone">Notifcations tones</string>
+    <string name="sound">Reproduces sounds for the in or out notifcations</string>
+    <string name="notification_vibration">Notifcations Vibration</string>
+    <string name="vibration">Sets the type of vibration for the notification</string>
+    <string name="notification_light">Notifications Light</string>
+    <string name="light">Establishes the colour light fot the notifications</string>
+    <string name="notification_priority">Notification priority</string>
+    <string name="priority">Priority of the notifications</string>
+    <string name="email_Notification">Email Notification</string>
+    <string name="email_notification">Notification will also be send to email of user</string>
+    <string name="vibration_type">Choose type of vibration</string>
+    <string name="disabled">DISABLED</string>
+    <string name="predeterminated">PREDETERMINATED</string>
+    <string name="long_mode">LONG</string>
+    <string name="short_mode">SHORT</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="delete_account">Delete Account</string>
+
+    <string name="language_spanish">Spanish 🇪🇸</string>
+    <string name="language_english">English 🇬🇧</string>
+    <string name="language_catalan">Catalan</string>
+    <string name="language_french">French 🇫🇷</string>
+    <string name="language_german">German 🇩🇪</string>
+
+    <string-array name="country_arrays">
+        <item>Choose Language </item>
+        <item>Spanish 🇪🇸</item>
+        <item>English 🇬🇧</item>
+        <item>Catalan</item>
+        <item>French 🇫🇷</item>
+        <item>German 🇩🇪</item>
+    </string-array>
+
+    <string-array name="genders_array">
+        <item>Choose Gender </item>
+        <item>Man 🙋‍♂️</item>
+        <item>Woman 🙋‍♀️</item>
+        <item>Others 🕵️‍♂️</item>
+    </string-array>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="configuration">Configuration</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="dont_have_account">Don\'t Have an Account?  Sign Up</string>
+
+    <!-- TODO: Camera -->
+    <string name="permission_request">This app needs permission for camera and audio recording.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="message_need_permission">Need Permissions</string>
+    <string name="message_permission">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="title_go_to_setting">GOTO SETTINGS</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play_stop">Play or Stop</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="video_name">Name of the video</string>
+
+
+    <string name="help_title" translatable="false">Contact with @MicroMobility for more information</string>
+    <string name="video_title" translatable="false">Title of the video</string>
+    <string name="duration_mock" translatable="false">5 min</string>
+    <string name="duration_badge" translatable="false">DURATION</string>
+    <string name="detection_button_YES" translatable="false">Detected</string>
+    <string name="detection_button_NO" translatable="false">Not detected</string>
+    <string name="uploaded_button_YES" translatable="false">Uploaded</string>
+    <string name="uploaded_button_NO" translatable="false">Not uploaded</string>
+    <string name="sender_badge" translatable="false">USER</string>
+    <string name="client_name_mock" translatable="false">Esteve Valls</string>
+    <string name="rating_mock" translatable="false">(26)</string>
+    <string name="from_badge" translatable="false">FROM</string>
+    <string name="to_badge" translatable="false">TO</string>
+    <string name="date_badge" translatable="false">DATE</string>
+    <string name="time_mock" translatable="false">18:30 pm</string>
+    <string name="date_mock" translatable="false">May 05, 2020</string>
+    <string name="information_badge" translatable="false">MORE INFORMATION</string>
+    <string name="information_time_mock" translatable="false">24 minutes</string>
+    <string name="request_btn_text" translatable="false">SHARE</string>
+    <string name="btn_annotation_mock" translatable="false">5 people have sent a request</string>
+    <string name="content_from1_mock">W 90th St</string>
+    <string name="content_from2_mock">New York, NY 10025</string>
+    <string name="content_to1_mock">46th Ave</string>
+    <string name="content_to2_mock">Woodside, NY 11101</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="no_geojson" translatable="false">There is no location added</string>
+
+    <string-array name="bikes_array">
+        <item>Bike</item>
+        <item>SkateBoard</item>
+    </string-array>
+
+    <string-array name="vehicle_array">
+        <item>Car</item>
+        <item>Motorbike</item>
+        <item>Bus</item>
+    </string-array>
+
+    <string-array name="public_array">
+        <item>Plane</item>
+        <item>Boat</item>
+        <item>Truck</item>
+        <item>Train</item>
+    </string-array>
+
+    <string-array name="signs_array">
+    <item>Traffic Light</item>
+    <item>Stop Sign</item>
+</string-array>
+
+    <string-array name="others_array">
+        <item>Bench</item>
+        <item>Fire Hydrant</item>
+        <item>Parking meter</item>
+    </string-array>
+</resources>
