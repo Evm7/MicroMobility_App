@@ -11,6 +11,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,6 +53,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.maps.UiSettings;
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions;
@@ -375,7 +377,8 @@ public class MainActivity extends AppCompatActivity implements MyMapFragment.OnF
                                 // Add the  layer for the dashed directions route line
                                 initDottedLineSourceAndLayer(style);
                                 symbolManager = new SymbolManager(mapView, mapboxMap, style);
-
+                                UiSettings uiSettings = MainActivity.this.mapboxMap.getUiSettings();
+                                uiSettings.setCompassGravity(Gravity.BOTTOM|Gravity.RIGHT);
                                 MainActivity.this.mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
                                     @Override
                                     public boolean onMapClick(@NonNull LatLng point) {
@@ -422,12 +425,14 @@ public class MainActivity extends AppCompatActivity implements MyMapFragment.OnF
                     uploadHelper.setPointList(MainActivity.this.coordinates);
                     uploadHelper.writeAll();
                     alertDialog2.cancel();
+                    mapView.onStop();
 
                 });
                 go_home_btn.setOnClickListener(v -> {
                     Toast.makeText(MainActivity.this, "Select GeoJson Format", Toast.LENGTH_SHORT).show();
                     alertDialog2.cancel();
                     getGeoJson();
+                    mapView.onStop();
 
                 });
             }

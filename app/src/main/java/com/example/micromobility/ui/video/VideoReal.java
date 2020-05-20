@@ -10,6 +10,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.micromobility.R;
+import com.example.micromobility.ui.video.dashboard.PlayerHelper;
+import com.google.android.exoplayer2.source.dash.PlayerEmsgHandler;
 
 import java.io.File;
 
@@ -17,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
-public class VideoReal extends Fragment {
+public class VideoReal extends Fragment implements PlayerHelper.EndOption {
 
     private View mcontainer;
     private static final String ARG_PARAM1 = "param1";
@@ -26,7 +28,7 @@ public class VideoReal extends Fragment {
 
     private String path;
     private File file;
-    private VideoView videoView;
+    private PlayerHelper playerHelper;
 
 
 
@@ -62,21 +64,14 @@ public class VideoReal extends Fragment {
     }
 
        private void initializeVideo(){
-            videoView =(VideoView) mcontainer.findViewById(R.id.vdVw);
-            //Set MediaController  to enable play, pause, forward, etc options.
-            MediaController mediaController= new MediaController(mcontainer.getContext());
-            mediaController.setAnchorView(videoView);
-            //Location of Media File
-            Uri uri = Uri.fromFile(file);
-            //Starting VideView By Setting MediaController and URI
-            videoView.setMediaController(mediaController);
-            videoView.setVideoURI(uri);
-            videoView.requestFocus();
-
+           playerHelper = new PlayerHelper(path, title, "Real Video", this);
+           playerHelper.initializePlayer(mcontainer);
+           playerHelper.setControls();
         }
 
-        private void startVideo(){
-            videoView.start();
-        }
+    @Override
+    public void onEndOption(String type) {
+
+    }
 }
 

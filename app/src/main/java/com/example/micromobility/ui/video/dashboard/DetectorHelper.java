@@ -78,7 +78,7 @@ public class DetectorHelper implements  PlayerHelper.EndOption{
         else if (type.equals("Pedestrians"))  {
             set_type_of_pedestrians(container);
         }
-        else if (type.equals("Bicycles"))  {
+        else if (type.equals("Bicycle"))  {
             set_type_of_bike(container);
         }
         else if (type.equals("Small vehicles"))  {
@@ -200,11 +200,11 @@ public class DetectorHelper implements  PlayerHelper.EndOption{
 
     private void set_type_of_bike(ViewGroup view) {
         menu_road = view.findViewById(R.id.menu_fab);
-        category = "Bikes";
+        category = "Bicycle";
         FloatingActionButton bikes_btn = view.findViewById(R.id.bikes_btn);
         bikes_btn.setOnClickListener(v -> {
             menu_road.collapse();
-            category = "Bikes";
+            category = "Bicycle";
             Toast.makeText(context, "Counting "+ category, Toast.LENGTH_SHORT).show();
             menu_road.setIcon(context.getDrawable(R.mipmap.bike));
         });
@@ -241,7 +241,7 @@ public class DetectorHelper implements  PlayerHelper.EndOption{
         FloatingActionButton motorbike_btn = view.findViewById(R.id.motorbike_btn);
         motorbike_btn.setOnClickListener(v -> {
             menu_road.collapse();
-            category = "Motorbikes";
+            category = "Motorbike";
             Toast.makeText(context, "Counting "+ category, Toast.LENGTH_SHORT).show();
             menu_road.setIcon(context.getDrawable(R.mipmap.motorbike));
         });
@@ -346,7 +346,6 @@ public class DetectorHelper implements  PlayerHelper.EndOption{
     }
     private void set_type_of_signs(ViewGroup view) {
         menu_road = view.findViewById(R.id.menu_fab);
-        category = "Bikes";
         category = "Traffic Light";
         FloatingActionButton traffic_light_btn = view.findViewById(R.id.traffic_light_btn);
         traffic_light_btn.setOnClickListener(v -> {

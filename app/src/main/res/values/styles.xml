@@ -104,6 +104,9 @@
         <item name="android:background">@drawable/background_label_fab</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
-
+    <style name="SpinnerTextViewItem" parent="@android:style/Widget.TextView" >
+        <item name="android:textSize" >14dp</item>
+        <item name="android:textStyle" >bold|italic</item>
+    </style>
 
 </resources>

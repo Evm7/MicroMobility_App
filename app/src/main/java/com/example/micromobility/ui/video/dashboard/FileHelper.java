@@ -43,7 +43,13 @@ public class FileHelper {
             JSONObject read_Object = readManualFile("None");
             FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            JSONObject updated = setManualValue(category, jsonArray,  read_Object);
+            JSONObject updated;
+            if(read_Object==null){
+                JSONObject created = createFileObject();
+                updated = setManualValue(category, jsonArray,  created);
+            }else{
+                updated = setManualValue(category, jsonArray,  read_Object);
+            }
             bufferedWriter.write(updated.toString(5));
             bufferedWriter.close();
         }
@@ -137,6 +143,7 @@ public class FileHelper {
         JSONArray train = new JSONArray();
         JSONArray bicycle = new JSONArray();
         JSONArray skateboard = new JSONArray();
+        JSONArray parking_meter = new JSONArray();
         JSONArray traffic_light = new JSONArray();
         JSONArray stop_sign = new JSONArray();
         JSONArray fire_hydrant = new JSONArray();
@@ -158,6 +165,7 @@ public class FileHelper {
             all.put("Stop Sign", stop_sign);
             all.put("Fire Hydrant", fire_hydrant);
             all.put("Bench", bench);
+            all.put("Parking Meter", parking_meter);
             all.put("New categories", new_categories);
 
         } catch (JSONException e) {

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.example.micromobility.R;
 import com.example.micromobility.Storage.InternalStorage;
 import com.example.micromobility.ui.profile.Adapters.Item;
+import com.example.micromobility.ui.video.MyMap;
 import com.example.micromobility.ui.video.VideoActivity;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
@@ -51,6 +52,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mapbox.geojson.FeatureCollection;
@@ -114,6 +116,10 @@ public class MyMapFragment extends Fragment {
 
     private View mcontainer;
 
+    private EnableScroll callback;
+    private boolean blocked=true;
+
+
 
     public MyMapFragment() {
         // Required empty public constructor
@@ -122,7 +128,7 @@ public class MyMapFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Mapbox.getInstance(requireActivity(), getString(R.string.acces_token));
-
+        this.callback = (MyMapFragment.EnableScroll) getParentFragment();
         mcontainer = inflater.inflate(R.layout.mymap_fragment, container, false);
 
         in = new InternalStorage(mcontainer.getContext());
@@ -196,8 +202,25 @@ public class MyMapFragment extends Fragment {
                         symbolManager.setIconRotationAlignment(Property.ICON_ROTATION_ALIGNMENT_VIEWPORT);
                         addAllMarkers();
 
+                        setUIoptions();
                     }
                 });
+            }
+        });
+    }
+
+    private void setUIoptions(){
+        RelativeLayout block = mcontainer.findViewById(R.id.stop_btn);
+        ImageView imageView = block.findViewById(R.id.locker);
+        block.setOnClickListener(v -> {
+            blocked = !blocked;
+            this.callback.enableScrolling(blocked);
+            if (blocked){
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_black_24dp));
+                Toast.makeText(mcontainer.getContext(), "Scrolled unlocked", Toast.LENGTH_SHORT).show();
+            }else{
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open_black_24dp));
+                Toast.makeText(mcontainer.getContext(), "Scrolled locked", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -518,8 +541,15 @@ public class MyMapFragment extends Fragment {
         mapView.onLowMemory();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mapView.onDestroy();
+    }
 
-
+    public interface EnableScroll{
+        void enableScrolling(Boolean enable);
+    }
 
 }
 

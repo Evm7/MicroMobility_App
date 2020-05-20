@@ -5,6 +5,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ import com.google.android.exoplayer2.util.Util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 import androidx.fragment.app.Fragment;
 
@@ -52,9 +55,13 @@ public class PlayerHelper implements Player.EventListener{
     private ImageButton play, pause, restart, more_speed, less_speed;
     private TextView speed;
     private EndOption callback;
+    private Runnable runnable, runnable2;
+    private Handler handler, handler2;
 
 
     public PlayerHelper(String relative_path, String title, String type, EndOption endOption) {
+        System.out.println("PATH IS "+ relative_path);
+        System.out.println("TITLE IS  "+ title);
         this.relative_path=relative_path;
         this.title=title;
         this.type=type;
@@ -66,7 +73,7 @@ public class PlayerHelper implements Player.EventListener{
         mcontainer = container;
 
         mPlayerView = mcontainer.findViewById(R.id.player_view);
-
+        mPlayerView.setVisibility(View.VISIBLE);
         mediafile = new File(mcontainer.getContext().getExternalFilesDir(relative_path), title);
         // Instantiate the player.
         mPlayer = new SimpleExoPlayer.Builder(mcontainer.getContext()).build();
@@ -186,5 +193,47 @@ public class PlayerHelper implements Player.EventListener{
 
     public interface EndOption{
         void onEndOption(String type);
+    }
+
+    public void writeFramesText(TextView textView, TreeMap detections){
+        if (handler!=null){
+            handler.removeCallbacks(runnable);
+        }
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                int current_position = (int) (mPlayer.getCurrentPosition());
+                textView.setText(getType(current_position, detections));
+                handler.postDelayed(runnable, 250);
+            }
+        };
+        handler.postDelayed(runnable, 0);
+    }
+
+    public void writeFramesText2(TextView textView, TreeMap detections){
+        if (handler2!=null){
+            handler2.removeCallbacks(runnable2);
+        }
+        handler2 = new Handler();
+        runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                int current_position = (int) (mPlayer.getCurrentPosition());
+                textView.setText(getType(current_position, detections));
+                handler2.postDelayed(runnable2, 250);
+            }
+        };
+        handler2.postDelayed(runnable2, 0);
+    }
+
+    private String getType(int time, TreeMap detections){
+        Map.Entry entry = detections.floorEntry(time);
+        if (entry == null){
+            return "Unknown";
+        }
+        else{
+            return (String) entry.getValue();
+        }
     }
 }

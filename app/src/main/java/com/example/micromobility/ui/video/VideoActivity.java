@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -57,7 +58,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 
-public class VideoActivity extends AppCompatActivity implements MyMap.OnFragmentInteractionListener {
+public class VideoActivity extends AppCompatActivity implements MyMap.OnFragmentInteractionListener, MyMap.EnableScroll {
     private String username;
     private static final String TAG = "VideoActivity";
     private Bitmap avatar;
@@ -75,10 +76,10 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
     private static final int NUM_PAGES = 5;
 
     private int[] tabIcons = {
+            R.drawable.ic_dashboard_black_24dp,
             R.drawable.ic_map_black_24dp,
             R.drawable.ic_myvideos,
             R.drawable.ic_detect,
-            R.drawable.ic_dashboard_black_24dp,
             R.drawable.ic_objects
     };
 
@@ -142,10 +143,10 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
 
         tabLayout = findViewById(R.id.tabs);
         pagerAdapter = new ScreenSlidePagerAdapter(this);
-        pagerAdapter.addFragment(MyMap.newInstance(fromAddress, relativePath, geojson, fps), "Map", tabIcons[0]);
+        pagerAdapter.addFragment(DashboardFragment.newInstance(relativePath, detected, title), "Manual Detection", tabIcons[0]);
+        pagerAdapter.addFragment(MyMap.newInstance(fromAddress, relativePath, geojson, fps), "Map", tabIcons[1]);
         pagerAdapter.addFragment(VideoReal.newInstance(relativePath, title), "Video Real", tabIcons[1]);
-        pagerAdapter.addFragment(VideoDetected.newInstance(relativePath,"detected.mp4", detected), "Video Detected", tabIcons[2]);
-        pagerAdapter.addFragment(DashboardFragment.newInstance(relativePath, detected, title), "Manual Detection", tabIcons[3]);
+        pagerAdapter.addFragment(VideoDetected.newInstance(relativePath,title, detected), "Video Detected", tabIcons[3]);
         pagerAdapter.addFragment(VideoDescriptor.newInstance(relativePath, "Summary.txt"), "Objects", tabIcons[4]);
 
         viewPager.setAdapter(pagerAdapter);
@@ -155,24 +156,25 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
         new TabLayoutMediator(tabLayout, viewPager,
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        setPagingEnabled(Boolean.TRUE);
                         switch (position) {
                             case 0:
-                                tab.setText("MAP");
+                                tab.setText("MANUAL DETECTION");
                                 break;
                             case 1:
-                                tab.setText("REAL VIDEO");
+                                tab.setText("MAP");
                                 break;
                             case 2:
-                                tab.setText("DETECTED VIDEO");
+                                tab.setText("REAL VIDEO");
                                 break;
                             case 3:
-                                tab.setText("MANUAL DETECTION");
+                                tab.setText("DETECTED VIDEO");
                                 break;
                             case 4:
                                 tab.setText("OBJECTS");
                                 break;
                             default:
-                                tab.setText("MAP");
+                                tab.setText("MANUAL DETECTION");
                                 break;
                         }
                     }
@@ -227,6 +229,12 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
         alertDialog.show();
     }
 
+    public void setPagingEnabled(boolean enabled) {
+        viewPager.setUserInputEnabled(enabled);
+    }
+
+
+
     /**
      * Used to Delete the video if delete button pressed
      */
@@ -254,25 +262,17 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
     }
 
 
-    private void loadFragment(Fragment fragment, String tag) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(tag);
-        transaction.commit();
-    }
-     private void setToolbar(int title, String emoji){
-         getSupportActionBar().setTitle(getString(title)+ " "+ emoji);
-         getSupportActionBar().setSubtitle("");
-     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        setPagingEnabled(Boolean.TRUE);
     }
 
     @Override
     public void onResume(){
         super.onResume();
+        setPagingEnabled(Boolean.TRUE);
     }
 
     @Override
@@ -418,6 +418,11 @@ public class VideoActivity extends AppCompatActivity implements MyMap.OnFragment
         tab.setCustomView(null);
         tab.setCustomView(pagerAdapter.getSelectedTabView(position));
 
+    }
+
+    @Override
+    public void enableScrolling(Boolean enable) {
+        setPagingEnabled(enable);
     }
 
 

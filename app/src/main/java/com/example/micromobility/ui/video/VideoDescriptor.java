@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,11 +60,39 @@ public class VideoDescriptor extends Fragment {
 
         try {
             summary_text.setText(summary.toString(5));
-            detections_text.setText(detections.toString(5));
+            if(detections!=null) {
+                detections_text.setText(detections.toString(5));
+            }
+            else{
+                LinearLayout makedisappear = mcontainer.findViewById(R.id.layout_detections);
+                makedisappear.setVisibility(View.GONE);
+            }
         } catch (JSONException e) {
             Toast.makeText(mcontainer.getContext(), "Manual detections does not exist yet", Toast.LENGTH_SHORT ).show();
         }
         return mcontainer;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        JSONObject summary = fileHelper.readManualFile("Summary.json");
+        JSONObject detections = fileHelper.readManualFile("None");
+        TextView summary_text = mcontainer.findViewById(R.id.summary);
+        TextView detections_text = mcontainer.findViewById(R.id.detections_manuel);
+
+        try {
+            summary_text.setText(summary.toString(5));
+            if(detections!=null) {
+                detections_text.setText(detections.toString(5));
+            }
+            else{
+                LinearLayout makedisappear = mcontainer.findViewById(R.id.layout_detections);
+                makedisappear.setVisibility(View.GONE);
+            }
+        } catch (JSONException e) {
+            Toast.makeText(mcontainer.getContext(), "Manual detections does not exist yet", Toast.LENGTH_SHORT ).show();
+        }
     }
 }
 

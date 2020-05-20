@@ -70,7 +70,7 @@ public class DashboardFragment extends Fragment {
         specifyIcon(pedestrians_icon, R.mipmap.pedestrian, "Pedestrians", R.color.choose_pedestrian);
 
         bycicle_icon = mcontainer.findViewById(R.id.bycicle_icon);
-        specifyIcon(bycicle_icon, R.mipmap.bike, "Bicycles", R.color.choose_bikes);
+        specifyIcon(bycicle_icon, R.mipmap.bike, "Bicycle", R.color.choose_bikes);
 
         vehicle_icon = mcontainer.findViewById(R.id.vehicle_icon);
         specifyIcon(vehicle_icon, R.mipmap.vehicle, "Small vehicles", R.color.choose_vehicle);
@@ -113,7 +113,7 @@ public class DashboardFragment extends Fragment {
         }else if(text.equals("Pedestrians")){
             mcontainer = getLayoutInflater().inflate(R.layout.dashboard_pedestrians, container, false);
         }
-        else if(text.equals("Bicycles")){
+        else if(text.equals("Bicycle")){
             mcontainer = getLayoutInflater().inflate(R.layout.dashboard_bikes, container, false);
 
         }

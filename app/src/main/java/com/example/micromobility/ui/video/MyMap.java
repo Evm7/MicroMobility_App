@@ -13,12 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.micromobility.R;
 import com.example.micromobility.ui.video.dashboard.FileHelper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
@@ -31,6 +34,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.maps.UiSettings;
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions;
@@ -51,9 +55,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -92,8 +100,10 @@ public class MyMap extends Fragment {
     private static final String ARG_PARAM4 = "param4";
     private static final String ARG_PARAM5 = "param5";
 
+    private EnableScroll callback;
 
-    private boolean has_locations=false;
+
+    private boolean has_locations=false, blocked=true;
 
     private String path;
     private File file;
@@ -108,7 +118,7 @@ public class MyMap extends Fragment {
 
 
     // In order to mark the Road detection in each color
-    private HashMap<Integer, String> road_detections_map;
+    private TreeMap<Integer, String> road_detections_map;
 
 
     public MyMap(){
@@ -159,7 +169,7 @@ public class MyMap extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Mapbox.getInstance(requireActivity(), getString(R.string.acces_token));
-
+        this.callback = (EnableScroll) getActivity();
         mcontainer = inflater.inflate(R.layout.videomap_fragment, container, false);
         file = new File(mcontainer.getContext().getExternalFilesDir(path),"map_information.geojson");
         if(!file.exists()){
@@ -224,6 +234,9 @@ public class MyMap extends Fragment {
                     public void onStyleLoaded(@NonNull Style style) {
                         // Map is set up and the style has loaded. Now you can add data or make other map adjustments.
                         // Adding route of JSON
+
+                        setSettings();
+
                         if(has_locations) {
                             new LoadGeoJson(MyMap.this, file).execute();
                             // create symbol manager object
@@ -243,13 +256,41 @@ public class MyMap extends Fragment {
                             symbolManager.setIconRotationAlignment(Property.ICON_ROTATION_ALIGNMENT_VIEWPORT);
                             addMarker(center_lat, center_long, R.drawable.ic_place_, "Starter");
                             getDetections();
-                            getRoadClassifer();
                         }
                         else{
                             Toast.makeText(mcontainer.getContext(), "Add its geojson map", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+            }
+        });
+    }
+
+    private void setSettings(){
+        UiSettings uiSettings = mapboxMap.getUiSettings();
+        uiSettings.setLogoEnabled(true);
+        RelativeLayout information = mcontainer.findViewById(R.id.information_btn);
+        RelativeLayout legend = mcontainer.findViewById(R.id.legend);
+        RelativeLayout block = mcontainer.findViewById(R.id.stop_btn);
+        ImageView imageView = block.findViewById(R.id.locker);
+
+        information.setOnClickListener(v -> {
+            information.setVisibility(View.GONE);
+            legend.setVisibility(View.VISIBLE);
+        });
+        legend.setOnClickListener(v -> {
+            information.setVisibility(View.VISIBLE);
+            legend.setVisibility(View.GONE);
+        });
+        block.setOnClickListener(v -> {
+            blocked = !blocked;
+            this.callback.enableScrolling(blocked);
+            if (blocked){
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_black_24dp));
+                Toast.makeText(mcontainer.getContext(), "Scrolled unlocked", Toast.LENGTH_SHORT).show();
+            }else{
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open_black_24dp));
+                Toast.makeText(mcontainer.getContext(), "Scrolled locked", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -263,14 +304,13 @@ public class MyMap extends Fragment {
     public void getRoadClassifer(){
         try {
             JSONArray road_classifier = detections.getJSONArray("Type of Road");
-            road_detections_map =new HashMap<>();
+            road_detections_map =new TreeMap<>();
 
             for(int i =0 ; i<road_classifier.length();i++){
                 JSONObject jsonObject = road_classifier.getJSONObject(i);
                 int time = (int) ((int) (jsonObject.getLong("Time")) /this.fps);
                 road_detections_map.put( time, jsonObject.getString("Value"));
             }
-            System.out.println("ROAD DETECTIONS ARE: "+ road_detections_map.toString());
         } catch (JSONException | NullPointerException e) {
             Toast.makeText(mcontainer.getContext(), "Video has not been detected yet", Toast.LENGTH_SHORT).show();
         }
@@ -363,6 +403,50 @@ public class MyMap extends Fragment {
     }
 
 
+
+    private void addLines(){
+        getRoadClassifer();
+        if(road_detections_map== null){
+            return;
+        }
+        Iterator iterator = road_detections_map.entrySet().iterator();
+        int last_frame= 0;
+        int current_frame=0;
+        // Iterate through the hashmap
+        while (iterator.hasNext()) {
+            Map.Entry mapElement = (Map.Entry) iterator.next();
+            String title = (String) mapElement.getValue();
+            current_frame = (int) mapElement.getKey();
+            addLine(getLineMarker(title, last_frame, current_frame));
+            last_frame = current_frame;
+        }
+    }
+
+    private void addLine(LineMarker lineMarker){
+        System.out.println("Adding line for :"+ lineMarker.getIdentifier());
+        System.out.println("LineMarker points are :"+ lineMarker.getPoints());
+
+        mapboxMap.getStyle().addSource(new GeoJsonSource(lineMarker.getIdentifier(), lineMarker.getPoints()));
+
+        mapboxMap.getStyle().addLayer(new LineLayer(lineMarker.getIdentifier(), lineMarker.getIdentifier()).withProperties(
+                lineColor(lineMarker.getColor()),
+                lineWidth(4f)
+        ));
+    }
+
+    private LineMarker getLineMarker(String title, int current_frame, int last_frame){
+        List<Point> listpoint = new ArrayList<>();
+
+        for(int i = current_frame; (i<routeCoordinateList.size()) && (i<last_frame); i++){
+            listpoint.add(routeCoordinateList.get(i));
+        }
+        List<Feature> directionsRouteFeatureList = new ArrayList<>();
+        directionsRouteFeatureList.add(Feature.fromGeometry(LineString.fromLngLats(listpoint)));
+        FeatureCollection featureCollection = FeatureCollection.fromFeatures(directionsRouteFeatureList);
+        return new LineMarker(title,current_frame, last_frame, featureCollection);
+    }
+
+
     /**
      * Add data to the map once the GeoJSON has been loaded
      *
@@ -380,6 +464,7 @@ public class MyMap extends Fragment {
                         initSources(style, featureCollection);
                         initSymbolLayer(style);
                         initDotLinePath(style);
+                        addLines();
                         initRunnable();
                     });
                 }
@@ -481,7 +566,7 @@ public class MyMap extends Fragment {
      */
     private void initDotLinePath(@NonNull Style loadedMapStyle) {
         loadedMapStyle.addLayer(new LineLayer("line-layer-id", LINE_SOURCE_ID).withProperties(
-                lineColor(Color.parseColor("#F13C6E")),
+                lineColor(Color.parseColor("#C233FF")),
                 lineWidth(4f)
         ));
     }
@@ -578,6 +663,12 @@ public class MyMap extends Fragment {
         mapView.onLowMemory();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mapView.onDestroy();
+    }
+
 
     /**
      * We want to load in the GeoJSON file asynchronous so the UI thread isn't handling the file
@@ -645,5 +736,67 @@ public class MyMap extends Fragment {
             return latLng;
         }
     };
+
+    class LineMarker {
+        private String title, identifier;
+        private int frame_start, frame_end;
+        private FeatureCollection points;
+        private int color;
+
+        public LineMarker(String title, int frame_start, int frame_end, FeatureCollection points) {
+            this.frame_start = frame_start;
+            this.frame_end = frame_end;
+            this.title=title;
+            this.points = points;
+            this.identifier = this.title +":"+frame_start+"-"+ frame_end;
+            setColor();
+        }
+
+        public int getColor() {
+            return color;
+        }
+
+        public String getIdentifier() {
+            return identifier;
+        }
+
+        public FeatureCollection getPoints() {
+            return points;
+        }
+
+        public int getFrame_end() {
+            return frame_end;
+        }
+
+        public int getFrame_start() {
+            return frame_start;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        private void setColor(){
+            if(title.equals("SideWalk")){
+                this.color = Color.parseColor("#335DFF");
+            }else if (title.equals("Bidirectional")){
+                this.color = Color.parseColor("#6CFF33");
+            }else if (title.equals("Unidirectional")){
+                this.color = Color.parseColor("#EDFF33");
+            }else if (title.equals("CrossWalk")){
+                this.color = Color.parseColor("#33FFF4");
+            }else if (title.equals("Unknown")){
+                this.color = Color.parseColor("#C233FF");
+            }else if (title.equals("Road")){
+                this.color = Color.parseColor("#FF335B");
+            }else{
+                this.color = Color.parseColor("#C233FF");
+            }
+        }
+    }
+
+    public interface EnableScroll{
+        void enableScrolling(Boolean enable);
+    }
 }
 

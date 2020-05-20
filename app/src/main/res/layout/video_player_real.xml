@@ -19,11 +19,16 @@
         app:cardCornerRadius="2dp"
         app:cardElevation="@dimen/cardview_default_elevation">
 
-        <VideoView
-            android:id="@+id/vdVw"
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
-    </androidx.cardview.widget.CardView>
+            app:show_buffering="when_playing"
+            app:hide_on_touch="true"
+            app:rewind_increment="@integer/exo_media_button_opacity_percentage_enabled"
+            app:show_shuffle_button="false"
+            app:controller_layout_id="@layout/custom_player">
+
+        </com.google.android.exoplayer2.ui.PlayerView></androidx.cardview.widget.CardView>
 
 </RelativeLayout>

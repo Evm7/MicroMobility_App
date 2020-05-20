@@ -193,6 +193,24 @@
 
     <string name="no_geojson" translatable="false">There is no location added</string>
 
+    <string-array name="items_detect_array">
+        <item>Pedestrians</item>
+        <item>Bicycle</item>
+        <item>Skateboard</item>
+        <item>Car</item>
+        <item>Motorbike</item>
+        <item>Bus</item>
+        <item>Plane</item>
+        <item>Boat</item>
+        <item>Truck</item>
+        <item>Train</item>
+        <item>Traffic Light</item>
+        <item>Stop Sign</item>
+        <item>Bench</item>
+        <item>Fire Hydrant</item>
+        <item>Parking meter</item>
+    </string-array>
+
     <string-array name="bikes_array">
         <item>Bike</item>
         <item>SkateBoard</item>

@@ -33,6 +33,12 @@
     <color name="choose_others">#7c8a45</color>
     <color name="choose_news">#8a5d2d</color>
 
+    <color name="SideWalk">#335DFF</color>
+    <color name="Bidirectional">#6CFF33</color>
+    <color name="Unidirectional">#EDFF33</color>
+    <color name="CrossWalk">#33FFF4</color>
+    <color name="Unknown">#C233FF</color>
+    <color name="Road">#FF335B</color>
 
 
 </resources>

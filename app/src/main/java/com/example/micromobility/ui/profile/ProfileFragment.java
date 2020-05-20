@@ -35,7 +35,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-public class ProfileFragment extends Fragment implements MainActivity.IOnBackPressed {
+public class ProfileFragment extends Fragment implements MainActivity.IOnBackPressed, MyMapFragment.EnableScroll {
 
 
     /**
@@ -155,6 +155,11 @@ public class ProfileFragment extends Fragment implements MainActivity.IOnBackPre
         tab.setCustomView(null);
         tab.setCustomView(pagerAdapter.getSelectedTabView(position));
 
+    }
+
+    @Override
+    public void enableScrolling(Boolean enable) {
+        viewPager.setUserInputEnabled(enable);
     }
 
     /**
