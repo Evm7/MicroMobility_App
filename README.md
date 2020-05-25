@@ -7,8 +7,13 @@ Application for the correct visualitzation of my Project Degree: Artificial Inte
 - [x] Localitzation
 - [x] Map integration
 - [x] Profile videos
-- [ ] Home Fragment
-- [ ] Previsiualtzation of all videos Activity
+- [x] Home Fragment
+- [x] Previsiualtzation of all videos Activity
+- [x] Creation of own manual detector
+- [x] Integration with the Full System Automatic Own detector
+- [ ] Imrpovement of the UI Design
+
+
 
 
 ## Goal:
